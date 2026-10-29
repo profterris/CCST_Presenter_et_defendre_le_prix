@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Présenter et défendre le prix</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap">
+<style>
+/* ── RESET & BASE ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Fiche d'exercices en thème clair : blocs = séances, cartes dépliables, corrections masquables */
+:root {
+  --bg:        #f4f6f9;
+  --surface:   #ffffff;
+  --card:      #ffffff;
+  --border:    #dfe3ea;
+  --border-hi: #b9c0ce;
+  --text:      #1d2230;
+  --text-dim:  #5c6476;
+  --accent:    #b97d00;
+  --accent-bg: #fff6df;
+  --green:     #1b8047;
+  --green-bg:  #ecf7f0;
+  --green-bd:  #c9e6d4;
+  --green-dk:  #12552f;
+  --red:       #c23b3b;
+  --blue:      #2d69ad;
+  --blue-bg:   #edf3fb;
+  --purple:    #6f45ad;
+  --font-head: 'Syne', 'Trebuchet MS', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --radius:    10px;
+  color-scheme: light;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── HEADER ──────────────────────────────────────────────── */
+.site-header {
+  background: linear-gradient(135deg, #ffffff 0%, #eef2f8 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 44px 20px 32px;
+  text-align: center;
+}
+.site-header .kicker {
+  display: inline-block;
+  background: var(--accent);
+  color: #ffffff;
+  font-family: var(--font-head);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 3px 12px;
+  border-radius: 3px;
+  margin-bottom: 18px;
+}
+.site-header h1 {
+  font-family: var(--font-head);
+  font-size: clamp(24px, 6vw, 38px);
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+.site-header .sub {
+  color: var(--text-dim);
+  font-size: 14px;
+  font-weight: 400;
+  max-width: 540px;
+  margin: 0 auto 20px;
+}
+.legende {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 0 auto 22px;
+  font-size: 12.5px;
+  color: var(--text-dim);
+}
+
+/* ── NAV ANCRES ──────────────────────────────────────────── */
+.nav-anchors {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.nav-anchors a {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 14px;
+  text-decoration: none;
+  transition: border-color .15s, color .15s;
+}
+.nav-anchors a:hover, .nav-anchors a:focus-visible { border-color: var(--accent); color: var(--accent); }
+
+/* ── CONTENEUR PRINCIPAL ─────────────────────────────────── */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 36px 18px 80px;
+}
+
+/* ── TITRE DE BLOC ───────────────────────────────────────── */
+.bloc-titre {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 52px 0 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.bloc-titre:first-child { margin-top: 0; }
+.bloc-titre .icone { font-size: 26px; flex-shrink: 0; }
+.bloc-titre h2 {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.bloc-titre h2 small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+/* ── MÉMO ────────────────────────────────────────────────── */
+.memo {
+  background: var(--green-bg);
+  border: 1px solid var(--green-bd);
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin: 16px 0 24px;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.memo .memo-titre {
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.memo code {
+  display: block;
+  background: #ffffff;
+  border: 1px solid var(--green-bd);
+  border-radius: 5px;
+  padding: 8px 12px;
+  color: var(--green-dk);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 13.5px;
+  margin: 5px 0;
+}
+.memo .note { color: var(--text-dim); font-size: 13px; margin-top: 8px; }
+
+/* ── CARTE EXERCICE ──────────────────────────────────────── */
+.exo-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 14px;
+  overflow: hidden;
+  transition: border-color .15s;
+}
+.exo-card:hover { border-color: var(--border-hi); }
+
+.exo-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+.exo-header::-webkit-details-marker { display: none; }
+.exo-header:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.exo-num {
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  min-width: 40px;
+}
+.badge {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.badge-1 { background: #e9f6ee; color: var(--green); border: 1px solid #bfe2cc; }
+.badge-2 { background: var(--accent-bg); color: #8a5d00; border: 1px solid #efd798; }
+.badge-3 { background: #fbeaea; color: var(--red); border: 1px solid #efc4c4; }
+.badge-exam { background: #f2ecfa; color: var(--purple); border: 1px solid #d9c9ef; }
+
+.exo-titre-txt {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  flex: 1 1 200px;
+  min-width: 0;
+}
+.chevron { color: var(--text-dim); font-size: 13px; flex-shrink: 0; transition: transform .2s; }
+details[open] .chevron { transform: rotate(180deg); }
+
+/* ── CORPS DE L'EXERCICE ─────────────────────────────────── */
+.exo-body { padding: 0 16px 20px; border-top: 1px solid var(--border); }
+
+.contexte {
+  background: var(--blue-bg);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 6px 6px 0;
+  padding: 14px 16px;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.contexte strong { color: var(--text); }
+
+.table-wrap { overflow-x: auto; margin: 12px 0; }
+.tableau-donnees {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  background: var(--surface);
+}
+.tableau-donnees th {
+  background: #eef1f6;
+  color: var(--text-dim);
+  font-family: var(--font-head);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.tableau-donnees td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+}
+.tableau-donnees tr:last-child td { border-bottom: none; }
+.tableau-donnees td.num { font-weight: 700; color: var(--text); white-space: nowrap; }
+
+.questions { margin: 18px 0 0; }
+.question { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
+.question .q-num {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  background: var(--accent);
+  color: #ffffff;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 11px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.question p { font-size: 14px; margin: 0; min-width: 0; }
+
+/* ── COUP DE POUCE ───────────────────────────────────────── */
+.ordre-grandeur {
+  background: var(--accent-bg);
+  border: 1px solid #efd798;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #6e4b00;
+  margin: 12px 0 0;
+}
+.ordre-grandeur::before { content: "💡 "; }
+
+/* ── BOUTON CORRECTION ───────────────────────────────────── */
+.btn-corrige {
+  background: var(--surface);
+  border: 1px solid var(--border-hi);
+  border-radius: 6px;
+  color: var(--text-dim);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 16px;
+  margin-top: 18px;
+  transition: all .15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-corrige:hover, .btn-corrige:focus-visible { border-color: var(--green); color: var(--green); }
+
+/* ── CORRECTION ──────────────────────────────────────────── */
+.correction {
+  display: none;
+  background: var(--green-bg);
+  border: 1px solid var(--green-bd);
+  border-radius: 6px;
+  padding: 16px;
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.correction.visible { display: block; }
+.correction .corr-etape {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--green-bd);
+}
+.correction .corr-etape:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.correction .c-num {
+  display: inline-block;
+  background: var(--green);
+  color: #ffffff;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-size: 10px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 18px;
+  margin-right: 6px;
+}
+.correction code {
+  display: block;
+  background: #ffffff;
+  border: 1px solid var(--green-bd);
+  border-radius: 4px;
+  padding: 6px 12px;
+  color: var(--green-dk);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  margin: 5px 0;
+}
+.correction .res { font-family: var(--font-head); font-weight: 700; color: var(--text); }
+.correction .conclu { margin-top: 8px; font-size: 13.5px; color: #2c6244; font-style: italic; }
+.correction .tableau-corr { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; background: #ffffff; }
+.correction .tableau-corr th {
+  background: #dff0e6;
+  color: var(--green-dk);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  text-align: left;
+}
+.correction .tableau-corr td { padding: 6px 10px; border-bottom: 1px solid var(--green-bd); color: #24402f; vertical-align: top; }
+.correction .tableau-corr td.val { font-weight: 700; color: var(--green); }
+
+/* ── SÉPARATEUR ──────────────────────────────────────────── */
+hr.section-sep { border: none; border-top: 1px solid var(--border); margin: 54px 0 0; }
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 20px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 12px;
+  background: var(--surface);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .exo-titre-txt { font-size: 13.5px; }
+  .contexte { font-size: 13.5px; }
+  .tableau-donnees { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+<!-- ══ HEADER ══════════════════════════════════════════════ -->
+<header class="site-header">
+  <div class="kicker">💶 Bloc 1 – BTS CCST 2e année · épreuve E5</div>
+  <h1>Présenter<br>et défendre le prix</h1>
+  <p class="sub">Chapitre 10. 20 exercices en 5 séances, avec l'entreprise RESO. Ouvre un exercice, réponds sur ton ordinateur, puis vérifie avec la correction.</p>
+  <div class="legende">
+    <span class="badge badge-1">⬆ décollage</span> je découvre
+    <span class="badge badge-2">◆ intermédiaire</span> j'applique
+    <span class="badge badge-exam">★ examen</span> je m'entraîne
+  </div>
+  <nav class="nav-anchors">
+    <a href="#referentiel">0 · Repères</a>
+    <a href="#presenter">1 · Annoncer le prix</a>
+    <a href="#objection">2 · Accueillir l'objection prix</a>
+    <a href="#justifier">3 · Justifier le prix</a>
+    <a href="#concession">4 · Concéder sans brader</a>
+    <a href="#examen">5 · Sujets type examen</a>
+  </nav>
+</header>
+
+<main>
+
+<div class="bloc-titre" id="referentiel">
+  <span class="icone">📌</span>
+  <h2><small>Repères · référentiel BTS CCST</small>Ce que tu travailles dans ce chapitre</h2>
+</div>
+<div class="memo">
+  <div class="memo-titre">🗂 épreuve E5 – bloc 1</div>
+  <code>Compétences : C1.1-4 concevoir une stratégie de négociation (objectifs, axe d'argumentation, outils personnalisés) · C1.3-3 défendre les marges (détermination de la marge de manœuvre) · C1.4-4 réaliser une argumentation personnalisée · C1.4-5 finaliser un accord.</code>
+  <code>Critères d'évaluation : les objectifs de négociation sont définis et adaptés · des outils de négociation adaptés sont préparés · le risque client/affaire est pris en compte · une démarche proactive de négociation est mise en œuvre · des outils de communication et de négociation adaptés au contexte sont mobilisés.</code>
+  <code>Objectif final : dans ta situation de négociation, annoncer ton prix, traiter une objection prix et, si besoin, accorder une concession avec contrepartie, en restant dans ta marge de manœuvre.</code>
+</div>
+<div class="memo">
+  <div class="memo-titre">📚 sources du chapitre</div>
+  <code>[1] Manuel Nathan, chapitre 10 « Négocier et vendre une solution adaptée au client », fiche ressource 3 « Présenter et défendre le prix », p. 183-184.</code>
+  <code>[2] R. Fisher et W. Ury, <em>Getting to yes : negotiating agreement without giving in</em>, 1981 – origine de la BATNA (MESORE en français). Synthèse : <a href="https://www.salesforce.com/fr/resources/definition/batna/" target="_blank">Salesforce, « Qu'est-ce que la technique BATNA »</a>.</code>
+  <code>[3] M. V. Marn, E. V. Roegner et C. C. Zawada, <a href="https://www.mckinsey.com/Business%20Functions/Marketing%20and%20Sales/Our%20Insights/The%20power%20of%20pricing" target="_blank">« The power of pricing »</a>, McKinsey Quarterly, février 2003.</code>
+  <code>[4] M. Aguilar, <a href="https://dunod.com/entreprise-et-economie/vaincre-objections-clients-techniques-refutation-et-reponses-aux-75" target="_blank"><em>Vaincre les objections des clients</em></a>, Dunod, 5e édition, 2024 – partie consacrée à la défense des prix.</code>
+  <code>[5] Y. Guilleux, <a href="https://blog.hubspot.fr/sales/negocier-defendre-prix" target="_blank">« Comment négocier un prix ? Techniques et exemples »</a>, blog HubSpot France, mis à jour le 24 août 2023.</code>
+</div>
+<hr class="section-sep">
+
+<!-- BLOC 1 -->
+<div class="bloc-titre" id="presenter">
+  <span class="icone">🏷️</span>
+  <h2><small>Séance 1</small>Bloc 1 – Quand et comment annoncer le prix ?</h2>
+</div>
+<div class="memo">
+  <div class="memo-titre">🗂 mémo</div>
+  <code>Le bon moment = le client n'a plus de question et a validé la solution par une question de contrôle [1].</code>
+  <code>Technique du sandwich = un avantage · le prix · un autre avantage [1].</code>
+  <code>Technique de la boule de neige = le prix d'abord · puis 2 ou 3 avantages importants pour le client [1].</code>
+  <code>En B to B, le prix s'annonce hors taxes (HT), avec assurance, sans s'excuser.</code>
+  <code>Les avantages cités sont ceux que le client a exprimés pendant la découverte, pas une liste générale.</code>
+</div>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 1</span>
+    <span class="badge badge-1">⬆ décollage</span>
+    <span class="exo-titre-txt">Sandwich ou boule de neige ?</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Tu es technico-commercial(e) en alternance chez <strong>RESO</strong>, qui conçoit et vend des logiciels de gestion de la relation client (CRM) et des applications pour tablettes. Ta tutrice a noté quatre annonces de prix entendues en rendez-vous. Elle les projette au tableau : la classe a 3 minutes.</div>
+    <div class="table-wrap"><table class="tableau-donnees"><thead><tr><th>Annonce</th><th>Phrase du commercial</th></tr></thead><tbody><tr><td>A</td><td>« Pour 39 € HT par mois, vous suivez toutes vos commandes de gâteaux sur votre téléphone et vous n'oubliez plus aucune livraison. »</td></tr><tr><td>B</td><td>« Vos commerciaux saisiront leurs comptes rendus en visite. L'abonnement est de 5 400 € HT par an, et votre directeur aura son tableau de bord chaque lundi. »</td></tr><tr><td>C</td><td>« L'application coûte 12 € HT par tablette et par mois. Elle fonctionne hors connexion, les données sont hébergées en France et le support répond 24 h/24. »</td></tr><tr><td>D</td><td>« Le support répond 24 h/24. Le tarif est de 8 640 € HT par an pour vos 60 tablettes, et vos infirmières sont formées sur place. »</td></tr></tbody></table></div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Classe chaque annonce : sandwich ou boule de neige.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Pour l'annonce A, quel est l'intérêt de citer « les livraisons » à un boulanger ?</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> regarde où se trouve le prix dans la phrase : au début ou au milieu ?</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <div class="table-wrap"><table class="tableau-corr"><thead><tr><th>Annonce</th><th>Technique</th></tr></thead><tbody><tr><td>A</td><td class="val">boule de neige (prix puis 2 avantages)</td></tr><tr><td>B</td><td class="val">sandwich</td></tr><tr><td>C</td><td class="val">boule de neige (prix puis 3 avantages)</td></tr><tr><td>D</td><td class="val">sandwich</td></tr></tbody></table></div></div>
+      <div class="corr-etape"><span class="c-num">2</span> <p class="conclu">Le commercial reprend un besoin exprimé pendant la découverte : l'avantage parle au client, le prix paraît justifié.</p></div>
+    </div>
+  </div>
+</details>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 2</span>
+    <span class="badge badge-2">◆ intermédiaire</span>
+    <span class="exo-titre-txt">Repérer les erreurs d'une annonce de prix</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Un nouveau commercial de RESO rencontre <strong>Inès Barka</strong>, assistante commerciale chez <strong>OXO</strong> (PME de 45 salariés). Voici le début de l'entretien, projeté au tableau.<br>
+    <em>« Bonjour madame Barka. Alors, je vais être franc, notre CRM n'est pas donné : environ 6 000 € par an, peut-être un peu plus… Je sais, c'est cher, mais c'est un bon produit. Bon, sinon, comment travaillent vos commerciaux aujourd'hui ? »</em></div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Relève au moins quatre erreurs commises par le commercial.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Indique à quel moment de l'entretien le prix aurait dû être annoncé.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> pense au moment, au ton, à la précision du chiffre et aux avantages.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> Erreurs : prix annoncé avant la découverte des besoins · prix imprécis (« environ », « peut-être plus ») et sans mention HT · il s'excuse et dévalorise l'offre (« je sais, c'est cher ») · aucun avantage lié aux besoins d'OXO · argument vague (« un bon produit »).</div>
+      <div class="corr-etape"><span class="c-num">2</span> <p class="res">Après la découverte, la présentation de la solution et une question de contrôle validée par le client.</p><p class="conclu">Annoncer trop tôt provoque une objection avant que la valeur de la solution soit perçue.</p></div>
+    </div>
+  </div>
+</details>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 3</span>
+    <span class="badge badge-2">◆ intermédiaire</span>
+    <span class="exo-titre-txt">Construire l'annonce du prix pour OXO</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Ta tutrice veut équiper l'équipe commerciale d'OXO (2 assistants et le directeur commercial, <strong>Paul Green</strong>) avec le CRM et l'application tablette de RESO. Pendant la découverte, Inès Barka a exprimé trois attentes.</div>
+    <div class="table-wrap"><table class="tableau-donnees"><thead><tr><th>Élément</th><th>Donnée</th></tr></thead><tbody><tr><td>Abonnement</td><td>150 € HT par utilisateur et par mois · 3 utilisateurs</td></tr><tr><td>Installation et paramétrage</td><td>1 200 € HT, la première année</td></tr><tr><td>Attente 1</td><td>« On perd du temps à ressaisir les comptes rendus le soir. »</td></tr><tr><td>Attente 2</td><td>« On oublie des relances de devis. »</td></tr><tr><td>Attente 3</td><td>« Paul veut voir les chiffres de l'équipe sans nous les demander. »</td></tr></tbody></table></div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Calcule le prix annuel de l'abonnement et le montant total de la première année.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Rédige l'annonce du prix avec la technique du sandwich.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Rédige la même annonce avec la technique de la boule de neige.</p></div>
+      <div class="question"><span class="q-num">4</span><p>Lis tes deux versions à ton voisin : laquelle sonne le plus naturellement dans ta bouche ?</p></div>
+    </div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <code>Abonnement annuel = 150 × 3 × 12 = 5 400 € HT</code><code>Première année = 5 400 + 1 200 = 6 600 € HT</code></div>
+      <div class="corr-etape"><span class="c-num">2</span> Exemple : <em>« Vos commerciaux saisiront leurs comptes rendus directement en visite. L'ensemble est à 6 600 € HT la première année, installation comprise, puis 5 400 € HT par an. Et monsieur Green aura son tableau de bord sans avoir à vous le demander. »</em></div>
+      <div class="corr-etape"><span class="c-num">3</span> Exemple : <em>« Pour 6 600 € HT la première année, installation comprise, vous ne ressaisissez plus rien le soir, chaque devis déclenche une relance automatique et monsieur Green suit les chiffres en temps réel. »</em></div>
+      <div class="corr-etape"><span class="c-num">4</span> <p class="conclu">Les deux techniques sont valables : choisis celle que tu maîtrises le mieux et prépare-la mot pour mot, c'est un outil de négociation personnalisé (C1.1-4).</p></div>
+    </div>
+  </div>
+</details>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 4</span>
+    <span class="badge badge-exam">★ examen</span>
+    <span class="exo-titre-txt">Annoncer ton prix en 45 secondes</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Dans ta situation de négociation (fiche descriptive E5), tu vas devoir annoncer le prix de ta solution. Défi chronométré : chaque étudiant passe devant la classe, le chronomètre est projeté au tableau.</div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Rédige sur ton ordinateur ta question de contrôle puis ton annonce de prix (sandwich ou boule de neige) avec les avantages attendus par ton client.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Annonce-la à l'oral en 45 secondes au maximum, sans lire, face à un camarade qui joue ton client.</p></div>
+      <div class="question"><span class="q-num">3</span><p>La classe note sur 3 : moment choisi · avantages personnalisés · assurance (voix, regard, pas d'excuse).</p></div>
+    </div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> Attendus : une question de contrôle (<em>« cette solution répond-elle à ce que vous attendiez ? »</em>) · un prix précis, HT · 2 ou 3 avantages tirés des besoins réels de ton client.</div>
+      <div class="corr-etape"><span class="c-num">2</span> Voix posée, regard vers le client, pas de « environ » ni de « je sais que c'est cher ».</div>
+      <div class="corr-etape"><span class="c-num">3</span> <p class="conclu">Ce travail alimente le critère « des outils de communication et de négociation adaptés au contexte sont mobilisés ».</p></div>
+    </div>
+  </div>
+</details>
+<hr class="section-sep">
+
+<!-- BLOC 2 -->
+<div class="bloc-titre" id="objection" style="margin-top:40px">
+  <span class="icone">🛑</span>
+  <h2><small>Séance 2</small>Bloc 2 – « C'est trop cher » : comment réagir ?</h2>
+</div>
+<div class="memo">
+  <div class="memo-titre">🗂 mémo</div>
+  <code>Objection fondée = le client n'a pas les moyens ou les concurrents sont réellement moins chers [1].</code>
+  <code>Objection infondée mais sincère = le client n'a pas compris l'intérêt de payer ce prix [1].</code>
+  <code>Objection prétexte = le client marchande pour obtenir les meilleures conditions [1].</code>
+  <code>Accepter l'objection = rester calme, positif et sûr de soi, ne pas se montrer déstabilisé [1].</code>
+  <code>Méthode en 4 étapes : isoler le prix · comprendre le client · justifier le prix · accepter éventuellement une concession [1].</code>
+  <code>Isoler = « à part le prix, cette solution vous convient-elle ? » · comprendre = « par rapport à quoi trouvez-vous le prix élevé ? » [1].</code>
+</div>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 5</span>
+    <span class="badge badge-1">⬆ décollage</span>
+    <span class="exo-titre-txt">Fondée, sincère ou prétexte ?</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Six objections entendues par les commerciaux de RESO. Jeu rapide : l'enseignant affiche une phrase, chacun répond dans le chat ou sur son ordinateur en 15 secondes (F, S ou P).</div>
+    <div class="table-wrap"><table class="tableau-donnees"><thead><tr><th>N°</th><th>Objection et contexte</th></tr></thead><tbody><tr><td>1</td><td>Clinique des Tilleuls : « votre concurrent est 15 % moins cher pour la même application. » Après vérification, c'est exact.</td></tr><tr><td>2</td><td>Boulangerie Lemoine : « 39 € par mois pour une appli ? Mon téléphone fait déjà des rappels. »</td></tr><tr><td>3</td><td>OXO : « c'est trop cher. Vous pouvez faire un geste ? » Inès Barka sourit et a déjà demandé la date d'installation.</td></tr><tr><td>4</td><td>Communauté de communes : « notre budget voté est de 6 000 €, votre offre est à 7 200 €. »</td></tr><tr><td>5</td><td>Bureau Plus : « vos conditions ne sont pas exceptionnelles, mes autres fournisseurs font mieux. » Il ne cite aucun fournisseur.</td></tr><tr><td>6</td><td>OXO : « 1 200 € d'installation ? On sait installer un logiciel nous-mêmes. »</td></tr></tbody></table></div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Classe chaque objection : fondée (F), infondée mais sincère (S) ou prétexte (P).</p></div>
+      <div class="question"><span class="q-num">2</span><p>Choisis une objection et indique l'indice qui t'a permis de trancher.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> un client qui a déjà adhéré à la solution et demande « un geste » marchande souvent.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <div class="table-wrap"><table class="tableau-corr"><thead><tr><th>N°</th><th>Type</th><th>Indice</th></tr></thead><tbody><tr><td>1</td><td class="val">fondée</td><td>concurrent réellement moins cher</td></tr><tr><td>2</td><td class="val">sincère</td><td>il ne voit pas la valeur ajoutée</td></tr><tr><td>3</td><td class="val">prétexte</td><td>adhésion déjà acquise, demande de geste</td></tr><tr><td>4</td><td class="val">fondée</td><td>budget limité et voté</td></tr><tr><td>5</td><td class="val">prétexte</td><td>comparaison vague, aucun nom</td></tr><tr><td>6</td><td class="val">sincère</td><td>ne mesure pas le travail de paramétrage</td></tr></tbody></table></div></div>
+      <div class="corr-etape"><span class="c-num">2</span> <p class="conclu">Le type d'objection décide de la réponse : on justifie une objection sincère, on teste une objection prétexte, on adapte l'offre face à une objection fondée.</p></div>
+    </div>
+  </div>
+</details>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 6</span>
+    <span class="badge badge-2">◆ intermédiaire</span>
+    <span class="exo-titre-txt">Isoler et comprendre l'objection</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Reprends les objections 2, 3 et 6 de l'exercice 5.</div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Pour chacune, rédige une question pour isoler le prix.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Pour chacune, rédige une question pour comprendre ce qui gêne le client.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Teste tes questions en binôme : ton camarade répond spontanément. As-tu obtenu une information utile ?</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> une bonne question de compréhension est ouverte : « par rapport à quoi… », « qu'est-ce qui… ».</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> Exemples : (2) <em>« à part le prix, l'application vous aiderait-elle pour vos commandes ? »</em> · (3) <em>« si l'on met le prix de côté, tout vous convient-il pour démarrer en mars ? »</em> · (6) <em>« hormis l'installation, l'abonnement vous paraît-il adapté ? »</em></div>
+      <div class="corr-etape"><span class="c-num">2</span> Exemples : (2) <em>« qu'utilisez-vous aujourd'hui pour suivre les commandes ? »</em> · (3) <em>« par rapport à quoi le trouvez-vous élevé ? »</em> · (6) <em>« qui s'occuperait du paramétrage chez vous, et combien de temps y consacrerait-il ? »</em></div>
+      <div class="corr-etape"><span class="c-num">3</span> <p class="conclu">Isoler le prix vérifie qu'il n'y a pas d'autre frein caché · comprendre donne la matière pour justifier.</p></div>
+    </div>
+  </div>
+</details>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 7</span>
+    <span class="badge badge-2">◆ intermédiaire</span>
+    <span class="exo-titre-txt">Le mauvais réflexe de la remise immédiate</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Inès Barka : <em>« c'est trop cher. »</em> Le commercial répond aussitôt : <em>« d'accord, je vous fais 10 % et on n'en parle plus. »</em> Sur l'affaire OXO, la première année est facturée <strong>6 600 € HT</strong> et la marge de RESO est de <strong>2 640 €</strong>.</div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Calcule le montant de la remise et la marge restante.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Calcule la baisse de la marge en pourcentage.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Liste quatre raisons pour lesquelles le commercial aurait dû défendre son prix.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> baisse de la marge = remise / marge initiale.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <code>Remise = 6 600 × 10 % = 660 €</code><code>Marge restante = 2 640 – 660 = 1 980 €</code></div>
+      <div class="corr-etape"><span class="c-num">2</span> <code>Baisse de la marge = 660 / 2 640 = 25,0 %</code></div>
+      <div class="corr-etape"><span class="c-num">3</span> <p class="res">Une remise de 10 % sur le prix fait perdre un quart de la marge.</p> Raisons [1] : préserver les marges et la rentabilité de RESO · préserver sa rémunération s'il est commissionné sur la marge · ne pas dévaloriser la solution · rester crédible (sinon le client pense que le prix initial était gonflé).<p class="conclu">McKinsey a montré que, pour une entreprise moyenne de l'indice S&P 1500, une baisse de prix de 1 % à volume constant réduit le résultat opérationnel d'environ 8 % [3].</p></div>
+    </div>
+  </div>
+</details>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 8</span>
+    <span class="badge badge-exam">★ examen</span>
+    <span class="exo-titre-txt">Le jeu du client mystère</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Par trois, sur ta situation de fiche descriptive. Le client choisit en secret, sur son ordinateur, un type d'objection (fondée, sincère ou prétexte) et sa vraie raison. Le commercial annonce son prix ; le client répond « c'est trop cher ». L'observateur chronomètre <strong>3 minutes</strong>. On tourne trois fois pour que chacun joue chaque rôle.</div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Commercial : accepte l'objection, isole le prix, pose des questions pour découvrir le type d'objection.</p></div>
+      <div class="question"><span class="q-num">2</span><p>À la fin, le commercial annonce le type trouvé. Le client révèle son choix.</p></div>
+      <div class="question"><span class="q-num">3</span><p>L'observateur note : attitude (calme, positive) · question pour isoler · questions pour comprendre · type trouvé ou non.</p></div>
+    </div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> Attendus : reformulation sans agacement (<em>« je comprends que le prix soit un point important pour vous »</em>) · une question pour isoler · au moins deux questions ouvertes pour comprendre · aucune remise proposée à ce stade.</div>
+      <div class="corr-etape"><span class="c-num">2</span> <p class="conclu">Identifier le type d'objection avant de répondre correspond à une démarche proactive de négociation (critère E5).</p></div>
+    </div>
+  </div>
+</details>
+<hr class="section-sep">
+
+<!-- BLOC 3 -->
+<div class="bloc-titre" id="justifier" style="margin-top:40px">
+  <span class="icone">⚖️</span>
+  <h2><small>Séance 3</small>Bloc 3 – Justifier le prix avec des arguments chiffrés</h2>
+</div>
+<div class="memo">
+  <div class="memo-titre">🗂 mémo</div>
+  <code>Addition = additionner les avantages pour justifier le prix [1].</code>
+  <code>Soustraction = montrer ce que le client perd en n'achetant pas [1].</code>
+  <code>Multiplication = multiplier les avantages (économies, gains) par la durée d'utilisation [1].</code>
+  <code>Division = diviser le prix par une durée ou une quantité [1].</code>
+  <code>Positionnement = justifier le prix par le haut de gamme ou la qualité de la solution [1].</code>
+  <code>Un argument chiffré se calcule avec les données du client, recueillies pendant la découverte.</code>
+</div>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 9</span>
+    <span class="badge badge-1">⬆ décollage</span>
+    <span class="exo-titre-txt">Quelle technique de justification ?</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Cinq réponses de commerciaux de RESO à l'objection « c'est trop cher ». Course contre la montre : 2 minutes pour tout associer.</div>
+    <div class="table-wrap"><table class="tableau-donnees"><thead><tr><th>Réponse</th><th>Phrase</th></tr></thead><tbody><tr><td>A</td><td>« Cela représente moins de 1,30 € par jour, le prix d'un café. »</td></tr><tr><td>B</td><td>« Vous avez la formation sur place, l'hébergement en France et un support 24 h/24. »</td></tr><tr><td>C</td><td>« Sans relance automatique, chaque devis oublié peut partir chez un concurrent. »</td></tr><tr><td>D</td><td>« Notre application est celle qui a la meilleure sécurité des données de santé du marché, c'est ce qui explique son prix. »</td></tr><tr><td>E</td><td>« Vos commerciaux gagnent 2 heures par semaine, soit 270 heures sur l'année pour l'équipe. »</td></tr></tbody></table></div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Associe chaque réponse à une technique : addition, soustraction, multiplication, division, positionnement.</p></div>
+    </div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> A = division · B = addition · C = soustraction · D = positionnement · E = multiplication.<p class="conclu">Attention à D : affirmer « la meilleure du marché » n'est crédible que si tu peux le prouver (certification, comparatif).</p></div>
+    </div>
+  </div>
+</details>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 10</span>
+    <span class="badge badge-2">◆ intermédiaire</span>
+    <span class="exo-titre-txt">Calculer ses arguments pour OXO et Lemoine</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Données recueillies pendant les découvertes. OXO : abonnement de <strong>5 400 € HT par an</strong> pour 3 utilisateurs · chaque utilisateur gagne <strong>2 heures par semaine</strong> de saisie · <strong>45 semaines</strong> travaillées · coût horaire chargé d'un salarié : <strong>35 €</strong> · environ <strong>2 devis oubliés par trimestre</strong>, montant moyen d'un devis : <strong>3 000 € HT</strong>. Boulangerie Lemoine : abonnement de <strong>39 € HT par mois</strong>.</div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Division : calcule le coût annuel pour la boulangerie Lemoine, puis le coût par jour (365 jours), arrondi au centime.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Division : calcule le coût de l'abonnement OXO par utilisateur et par jour.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Multiplication : calcule la valeur du temps gagné par an chez OXO et compare-la au prix de l'abonnement.</p></div>
+      <div class="question"><span class="q-num">4</span><p>Soustraction : calcule le chiffre d'affaires annuel potentiellement perdu par OXO à cause des devis oubliés.</p></div>
+      <div class="question"><span class="q-num">5</span><p>Rédige une phrase d'argumentation pour la question 3.</p></div>
+    </div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <code>Coût annuel = 39 × 12 = 468 € HT</code><code>Coût par jour = 468 / 365 = 1,28 € HT</code></div>
+      <div class="corr-etape"><span class="c-num">2</span> <code>Coût par utilisateur et par jour = 5 400 / 3 / 365 = 4,93 € HT</code></div>
+      <div class="corr-etape"><span class="c-num">3</span> <code>Temps gagné = 2 × 45 × 3 = 270 heures</code><code>Valeur = 270 × 35 = 9 450 €</code><code>9 450 / 5 400 = 1,75</code><p class="res">Le temps gagné vaut 1,75 fois le prix de l'abonnement.</p></div>
+      <div class="corr-etape"><span class="c-num">4</span> <code>CA perdu = 2 × 4 × 3 000 = 24 000 € HT par an</code></div>
+      <div class="corr-etape"><span class="c-num">5</span> Exemple : <em>« Vos trois commerciaux gagnent 270 heures par an, soit 9 450 € de temps de travail : l'abonnement à 5 400 € est largement compensé. »</em><p class="conclu">Un argument chiffré avec les données du client est un argument personnalisé (C1.4-4).</p></div>
+    </div>
+  </div>
+</details>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 11</span>
+    <span class="badge badge-2">◆ intermédiaire</span>
+    <span class="exo-titre-txt">Face au concurrent moins cher</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">La <strong>Clinique des Tilleuls</strong> veut équiper <strong>60 tablettes</strong>. Sophie Marchal, responsable des achats, compare deux offres.</div>
+    <div class="table-wrap"><table class="tableau-donnees"><thead><tr><th>Critère</th><th>RESO</th><th>Concurrent</th></tr></thead><tbody><tr><td>Prix par tablette et par mois</td><td>12 € HT</td><td>15 % moins cher</td></tr><tr><td>Hébergement des données</td><td>en France, certifié pour les données de santé</td><td>hors Union européenne</td></tr><tr><td>Fonctionnement hors connexion</td><td>oui</td><td>non</td></tr><tr><td>Formation des infirmières</td><td>incluse, sur place</td><td>vidéos en ligne</td></tr><tr><td>Support</td><td>24 h/24</td><td>jours ouvrés, 9 h – 18 h</td></tr></tbody></table></div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Calcule le prix annuel des deux offres et l'écart entre elles.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Ramène cet écart à une tablette et à un mois (technique de la division).</p></div>
+      <div class="question"><span class="q-num">3</span><p>Rédige une réponse à Sophie Marchal qui combine addition et positionnement.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> dans une clinique, le service fonctionne jour et nuit, et les données des patients sont sensibles.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <code>RESO = 12 × 60 × 12 = 8 640 € HT par an</code><code>Concurrent = 8 640 × 0,85 = 7 344 € HT par an</code><code>Écart = 8 640 – 7 344 = 1 296 € HT par an</code></div>
+      <div class="corr-etape"><span class="c-num">2</span> <code>1 296 / 60 / 12 = 1,80 € HT par tablette et par mois</code></div>
+      <div class="corr-etape"><span class="c-num">3</span> Exemple : <em>« Pour 1,80 € de plus par tablette et par mois, vos données de patients restent hébergées en France, vos infirmières travaillent même sans réseau, elles sont formées sur place et le support répond la nuit, quand votre service tourne aussi. »</em><p class="conclu">Objection fondée : on ne nie pas l'écart, on le rend petit et on montre ce qu'il achète.</p></div>
+    </div>
+  </div>
+</details>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 12</span>
+    <span class="badge badge-exam">★ examen</span>
+    <span class="exo-titre-txt">Le ring du prix</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Duel en binôme devant la classe, sur la situation de fiche descriptive du commercial. Le client répète trois fois l'objection prix, sous trois formes : <em>« c'est trop cher »</em>, <em>« vos concurrents sont mieux placés »</em>, <em>« ça dépasse mon budget »</em>. Durée : <strong>2 minutes</strong> par duel.</div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Prépare en 10 minutes trois justifications différentes, dont au moins une chiffrée.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Joue le duel : une technique différente à chaque relance du client.</p></div>
+      <div class="question"><span class="q-num">3</span><p>La classe vote dans un tableau projeté : techniques utilisées · calcul juste · ton assuré.</p></div>
+    </div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> Attendus : trois techniques différentes · au moins un argument chiffré avec les données du client · des avantages liés aux besoins découverts.</div>
+      <div class="corr-etape"><span class="c-num">2</span> Face à « ça dépasse mon budget » (objection souvent fondée), le commercial vérifie le budget réel avant de justifier.</div>
+      <div class="corr-etape"><span class="c-num">3</span> <p class="conclu">Ces réponses préparées forment ta fiche de traitement des objections prix, à placer en annexe de ta fiche descriptive E5.</p></div>
+    </div>
+  </div>
+</details>
+<hr class="section-sep">
+
+<!-- BLOC 4 -->
+<div class="bloc-titre" id="concession" style="margin-top:40px">
+  <span class="icone">🤝</span>
+  <h2><small>Séance 4</small>Bloc 4 – Concéder sans brader</h2>
+</div>
+<div class="memo">
+  <div class="memo-titre">🗂 mémo</div>
+  <code>Concession = remise envisagée seulement si le client continue d'objecter après les justifications [1].</code>
+  <code>Marge de manœuvre = limite de remise autorisée par l'entreprise · le commercial ne la dépasse pas [1].</code>
+  <code>Toute concession appelle une contrepartie : paiement comptant, engagement de durée, volume, recommandation [1] [5].</code>
+  <code>La concession n'est pas obligatoire : le commercial peut refuser si la marge baisse trop [1].</code>
+  <code>Prix plancher = seuil en dessous duquel on refuse l'affaire · il est fixé avant l'entretien [2] [5].</code>
+  <code>MESORE (BATNA) = meilleure solution de repli si aucun accord n'est trouvé, préparée avant l'entretien [2].</code>
+  <code>Lien avec la fiche descriptive : objectif haut · objectif bas · objectif de repli.</code>
+</div>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 13</span>
+    <span class="badge badge-1">⬆ décollage</span>
+    <span class="exo-titre-txt">Concession ou contrepartie ?</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Huit éléments notés pendant une négociation entre RESO et OXO. Vote à main levée, élément par élément.</div>
+    <div class="table-wrap"><table class="tableau-donnees"><thead><tr><th>N°</th><th>Élément</th></tr></thead><tbody><tr><td>1</td><td>remise de 5 % sur l'abonnement</td></tr><tr><td>2</td><td>OXO s'engage sur 2 ans</td></tr><tr><td>3</td><td>3 mois de formation offerts</td></tr><tr><td>4</td><td>paiement de l'année d'avance</td></tr><tr><td>5</td><td>OXO accepte de témoigner sur le site de RESO</td></tr><tr><td>6</td><td>installation offerte</td></tr><tr><td>7</td><td>OXO recommande RESO à deux entreprises partenaires</td></tr><tr><td>8</td><td>un utilisateur supplémentaire gratuit</td></tr></tbody></table></div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Classe chaque élément : concession (donnée par RESO) ou contrepartie (obtenue d'OXO).</p></div>
+      <div class="question"><span class="q-num">2</span><p>Associe chaque concession à une contrepartie qui te paraît équilibrée.</p></div>
+    </div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> Concessions : 1, 3, 6, 8 · contreparties : 2, 4, 5, 7.</div>
+      <div class="corr-etape"><span class="c-num">2</span> Exemple : remise de 5 % ↔ engagement sur 2 ans · formation offerte ↔ témoignage · installation offerte ↔ paiement d'avance · utilisateur gratuit ↔ deux recommandations.<p class="conclu">Règle : <em>« donnant-donnant »</em>. Une concession sans contrepartie apprend au client qu'il suffit de demander.</p></div>
+    </div>
+  </div>
+</details>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 14</span>
+    <span class="badge badge-2">◆ intermédiaire</span>
+    <span class="exo-titre-txt">Remise ou formation offerte : que coûte chaque concession ?</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">OXO trouve toujours le prix trop élevé. Ta tutrice t'autorise au maximum une <strong>remise de 5 %</strong> ou <strong>3 mois de formation gratuite</strong>. Données de l'affaire : prix de la première année <strong>6 600 € HT</strong> · coût de revient pour RESO <strong>3 960 €</strong>. La formation est facturée <strong>250 € HT par mois</strong> aux clients et coûte <strong>100 € par mois</strong> à RESO.</div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Calcule la marge de RESO sur l'affaire sans concession, et son taux par rapport au prix de vente.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Calcule ce que coûte à RESO une remise de 5 %, et la marge restante.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Calcule ce que coûtent à RESO 3 mois de formation offerts, et leur valeur pour OXO.</p></div>
+      <div class="question"><span class="q-num">4</span><p>Quelle concession proposes-tu en premier ? Justifie.</p></div>
+    </div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <code>Marge = 6 600 – 3 960 = 2 640 €</code><code>Taux de marge sur le prix = 2 640 / 6 600 = 40,0 %</code></div>
+      <div class="corr-etape"><span class="c-num">2</span> <code>Remise = 6 600 × 5 % = 330 €</code><code>Marge restante = 2 640 – 330 = 2 310 €, soit une baisse de 330 / 2 640 = 12,5 %</code></div>
+      <div class="corr-etape"><span class="c-num">3</span> <code>Coût pour RESO = 3 × 100 = 300 €</code><code>Valeur pour OXO = 3 × 250 = 750 € HT</code></div>
+      <div class="corr-etape"><span class="c-num">4</span> <p class="res">La formation offerte coûte moins cher à RESO (300 € contre 330 €) et vaut plus pour OXO (750 € contre 330 €).</p><p class="conclu">Privilégier les concessions qui coûtent peu au vendeur et valent beaucoup pour le client [5], c'est défendre les marges (C1.3-3).</p></div>
+    </div>
+  </div>
+</details>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 15</span>
+    <span class="badge badge-2">◆ intermédiaire</span>
+    <span class="exo-titre-txt">Préparer ses objectifs et sa MESORE</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Avant le prochain rendez-vous avec OXO, ta tutrice te demande de préparer ta stratégie prix. Le prix plancher fixé par RESO pour la première année est de <strong>6 270 € HT</strong>.</div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Formule un objectif haut, un objectif bas et un objectif de repli pour cette négociation.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Pour l'objectif bas, indique la contrepartie demandée.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Rédige ta MESORE : que fais-tu si OXO exige un prix inférieur à 6 270 € HT ?</p></div>
+      <div class="question"><span class="q-num">4</span><p>Explique pourquoi le prix plancher doit être fixé avant l'entretien.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> vérifie que 6 270 € correspond bien au prix après la remise maximale autorisée.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> <code>Vérification : 6 600 – 330 = 6 270 € HT</code> Exemple : objectif haut = signature à 6 600 € HT pour 3 utilisateurs · objectif bas = 6 600 € HT avec 3 mois de formation offerts, ou 6 270 € HT · objectif de repli = démarrage avec 2 utilisateurs et rendez-vous de bilan à 3 mois.</div>
+      <div class="corr-etape"><span class="c-num">2</span> Exemple : engagement sur 2 ans ou paiement de l'année d'avance.</div>
+      <div class="corr-etape"><span class="c-num">3</span> Exemple : <em>« je ne descends pas sous 6 270 € ; je propose une version à 2 utilisateurs, et je garde le contact pour une extension »</em>. La MESORE évite d'accepter un mauvais accord sous la pression [2].</div>
+      <div class="corr-etape"><span class="c-num">4</span> <p class="conclu">Sous la pression, on cède facilement. Un seuil chiffré fixé à froid protège la rentabilité de l'affaire : c'est la prise en compte du risque affaire (critère E5).</p></div>
+    </div>
+  </div>
+</details>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 16</span>
+    <span class="badge badge-exam">★ examen</span>
+    <span class="exo-titre-txt">Négociation flash à consignes secrètes</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Par deux. L'enseignant envoie à chacun, sur son ordinateur, une consigne secrète. <strong>Commercial RESO</strong> : prix 6 600 € HT · remise maximale 5 % · formation offerte possible · objectif : engagement de 2 ans. <strong>Acheteur OXO</strong> : budget idéal 6 000 € HT · tu peux payer d'avance · tu tiens à la formation de l'équipe. Durée : <strong>6 minutes</strong>, puis débriefing collectif.</div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Négociez à partir de l'objection <em>« votre prix est trop élevé »</em>.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Notez le résultat dans un tableau partagé projeté : prix final · concessions · contreparties.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Comparez les accords de la classe : quel commercial a le mieux défendu sa marge ?</p></div>
+    </div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> Attendus : les 4 étapes (isoler, comprendre, justifier, concéder) · une seule concession à la fois · une contrepartie pour chaque concession · prix final ≥ 6 270 € HT.</div>
+      <div class="corr-etape"><span class="c-num">2</span> Accord type : 6 600 € HT avec 3 mois de formation offerts, contre un engagement de 2 ans et un paiement d'avance.</div>
+      <div class="corr-etape"><span class="c-num">3</span> <p class="conclu">Le meilleur accord n'est pas le plus bas : c'est celui qui satisfait le client tout en protégeant la marge (partenariat gagnant-gagnant).</p></div>
+    </div>
+  </div>
+</details>
+<hr class="section-sep">
+
+<!-- BLOC 5 -->
+<div class="bloc-titre" id="examen" style="margin-top:40px">
+  <span class="icone">🎓</span>
+  <h2><small>Séance 5</small>Bloc 5 – Entraînement à l'épreuve E5</h2>
+</div>
+<div class="memo">
+  <div class="memo-titre">🗂 mémo</div>
+  <code>Épreuve E5 – conception et négociation de solutions technico-commerciales (anciennement E4).</code>
+  <code>Situation 1 : présentation orale de la préparation d'un entretien (20 min au maximum) + entretien avec la commission (10 min au maximum).</code>
+  <code>Situation 2 : négociation simulée à partir de la situation modifiée (15 à 20 min) + entretien (10 min au maximum).</code>
+  <code>Le prix se défend dans les deux situations : marge de manœuvre en situation 1, traitement de l'objection prix et concessions en situation 2.</code>
+</div>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 17</span>
+    <span class="badge badge-exam">★ examen</span>
+    <span class="exo-titre-txt">Sujet complet : présenter ta stratégie prix</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Tu présentes à la commission la partie « prix » de la préparation de ton entretien (situation de ta fiche descriptive).</div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Présente en 4 minutes : le prix de ta solution · ta marge de manœuvre et ton prix plancher · tes objectifs haut, bas et repli · les concessions et contreparties prévues · l'objection prix la plus probable et ta réponse.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Le groupe évalue avec les critères : objectifs définis et adaptés · outils de négociation préparés · risque client/affaire pris en compte.</p></div>
+    </div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> Plan attendu (exemple RESO – OXO) : 1. prix de 6 600 € HT la première année · 2. remise maximale 5 %, prix plancher 6 270 € HT · 3. objectifs haut, bas et repli (ex. 15) · 4. concessions classées de la moins coûteuse à la plus coûteuse, chacune avec sa contrepartie · 5. objection probable « c'est trop cher » et justification chiffrée (9 450 € de temps gagné).</div>
+      <div class="corr-etape"><span class="c-num">2</span> <p class="conclu">Des chiffres précis et justifiés montrent à la commission que tu maîtrises les aspects financiers de l'affaire (C1.3-3 et C1.3-4).</p></div>
+    </div>
+  </div>
+</details>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 18</span>
+    <span class="badge badge-exam">★ examen</span>
+    <span class="exo-titre-txt">Les questions de la commission</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Après ta présentation, la commission t'interroge. Un étudiant joue la commission et pose les questions dans un ordre au hasard ; tu réponds en 1 minute au maximum par question.</div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Comment avez-vous fixé votre marge de manœuvre ?</p></div>
+      <div class="question"><span class="q-num">2</span><p>Pourquoi ne pas avoir accordé la remise dès la première objection ?</p></div>
+      <div class="question"><span class="q-num">3</span><p>Que faites-vous si le client menace de partir chez le concurrent ?</p></div>
+      <div class="question"><span class="q-num">4</span><p>Le client a-t-il obtenu une contrepartie équilibrée ? Laquelle avez-vous obtenue ?</p></div>
+    </div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> Elle est fixée par l'entreprise (politique commerciale, limite de remise autorisée) ; le commercial calcule l'impact sur la marge avant l'entretien.</div>
+      <div class="corr-etape"><span class="c-num">2</span> Pour préserver la marge et la crédibilité du prix, et parce qu'il fallait d'abord isoler, comprendre et justifier l'objection.</div>
+      <div class="corr-etape"><span class="c-num">3</span> Vérifier si l'objection est fondée (offre comparable ?), rappeler les différences de valeur, puis appliquer la MESORE si le prix demandé est sous le prix plancher.</div>
+      <div class="corr-etape"><span class="c-num">4</span> Réponse précise : la concession accordée, sa valeur, la contrepartie obtenue et l'intérêt pour ton entreprise.</div>
+    </div>
+  </div>
+</details>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 19</span>
+    <span class="badge badge-exam">★ examen</span>
+    <span class="exo-titre-txt">Changement de paramètre : le budget est réduit</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte"><strong>Acteurs :</strong> Paul Green, directeur commercial d'OXO / toi, technico-commercial(e) RESO. <strong>Contexte commercial :</strong> la direction d'OXO a réduit le budget de l'équipe commerciale. Paul Green dispose de <strong>5 500 € HT</strong> au maximum pour la première année. <strong>Contexte concurrentiel :</strong> un concurrent lui a remis une offre à 5 200 € HT, sans formation. <strong>Délimitation :</strong> de l'annonce du prix jusqu'à la conclusion d'un accord ou d'un nouveau rendez-vous.</div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Identifie le type d'objection et indique si l'offre initiale reste possible.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Propose une solution adaptée au budget sans descendre sous ton prix plancher par utilisateur.</p></div>
+      <div class="question"><span class="q-num">3</span><p>Joue la négociation simulée pendant 8 minutes avec un binôme, puis analyse en 2 minutes la valeur ajoutée de ton conseil.</p></div>
+    </div>
+    <div class="ordre-grandeur"><strong>Coup de pouce :</strong> une offre pour 2 utilisateurs, c'est 150 × 2 × 12 + 1 200 € d'installation.</div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> Objection fondée : le budget est réellement limité. 6 270 € HT (prix plancher pour 3 utilisateurs) dépasse 5 500 € : l'offre initiale n'est plus possible.</div>
+      <div class="corr-etape"><span class="c-num">2</span> <code>2 utilisateurs = 150 × 2 × 12 + 1 200 = 4 800 € HT</code> Exemple : démarrer avec les 2 assistants (4 800 € HT, sous le budget), ajouter Paul Green en cours d'année, et justifier l'écart avec le concurrent par la formation et le support inclus.</div>
+      <div class="corr-etape"><span class="c-num">3</span> <p class="conclu">Adapter l'offre plutôt que brader le prix : c'est le conseil et la prescription attendus dans la deuxième partie de l'épreuve.</p></div>
+    </div>
+  </div>
+</details>
+
+<details class="exo-card">
+  <summary class="exo-header">
+    <span class="exo-num">Ex. 20</span>
+    <span class="badge badge-exam">★ examen</span>
+    <span class="exo-titre-txt">Check-list prix de ta fiche descriptive</span>
+    <span class="chevron">▼</span>
+  </summary>
+  <div class="exo-body">
+    <div class="contexte">Ta fiche descriptive doit être rendue en février. Vérifie la partie prix sur ton ordinateur, en 10 minutes.</div>
+    <div class="questions">
+      <div class="question"><span class="q-num">1</span><p>Vérifie que ta fiche contient : le prix de la solution · la marge de manœuvre · les objectifs haut, bas et repli · les concessions et contreparties prévues · l'objection prix probable.</p></div>
+      <div class="question"><span class="q-num">2</span><p>Vérifie que tes annexes contiennent une fiche de traitement des objections prix (type d'objection, question pour comprendre, justification).</p></div>
+      <div class="question"><span class="q-num">3</span><p>Note les 3 éléments à compléter en priorité.</p></div>
+    </div>
+    <button class="btn-corrige" onclick="toggleCorr(this)">✅ Voir la correction</button>
+    <div class="correction">
+      <div class="corr-etape"><span class="c-num">1</span> La stratégie de négociation de la fiche descriptive comprend les objectifs et les outils : les éléments prix en font partie.</div>
+      <div class="corr-etape"><span class="c-num">2</span> Fiche de traitement des objections prix : au moins 3 objections, avec pour chacune le type, une question pour isoler, une question pour comprendre, une justification chiffrée et la concession éventuelle avec sa contrepartie.</div>
+      <div class="corr-etape"><span class="c-num">3</span> <p class="conclu">Ces outils répondent au critère « des outils de négociation adaptés sont préparés ».</p></div>
+    </div>
+  </div>
+</details>
+</main>
+
+<footer class="site-footer">
+  BTS CCST – Bloc 1, épreuve E5 &nbsp;|&nbsp; Chapitre 10 : présenter et défendre le prix &nbsp;|&nbsp; 20 exercices progressifs
+</footer>
+
+<script>
+function toggleCorr(btn) {
+  const corr = btn.nextElementSibling;
+  const isVisible = corr.classList.contains('visible');
+  corr.classList.toggle('visible', !isVisible);
+  btn.textContent = isVisible ? '✅ Voir la correction' : '🔒 Masquer la correction';
+}
+</script>
+</body>
+</html>
